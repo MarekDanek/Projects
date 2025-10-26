@@ -2,15 +2,16 @@
 
 class Vector
 {
-    public:
+    public:                    
         Vector();
-        void set_x(double x_);
-        void get_x();
-        void set_y(double y_);     
-        void get_y();
+        Vector(double x_, double y_);   
+        double set_x(double x_);
+        double get_x();
+        double set_y(double y_);     
+        double get_y();
         double lenVector();
-        double SqaureLenVector();
-        Vector ScaleVector();
+        double SquareLenVector();
+        Vector ScaleVector(double s);
         
     private:
         double x;
