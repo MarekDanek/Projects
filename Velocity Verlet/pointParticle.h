@@ -2,7 +2,7 @@
 
 class PointParticle{
     public:
-        float mass;
+        double mass;
         Vector position;
         Vector velocity;
         Vector acceleration;

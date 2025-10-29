@@ -3,11 +3,11 @@
 
 class VelocityVerletIntegrator{
     public:
-        VelocityVerletIntegrator();
-        void add(PointParticle& particle);    
-        void run(double dt, double t0, double tMax,
-                Vector (*forceFunc)(const PointParticle&, const PointParticle&));
+        VelocityVerletIntegrator() {};
+        void add(PointParticle& pointParticle);    
+        void run(double dt, double t0, double tMax);
+        double gravitationalForce(PointParticle pointParticle1, PointParticle pointParticle2);
 
     private:
-        std::vector<PointParticle*> particles; 
+        std::vector<PointParticle> pointParticles; 
 };

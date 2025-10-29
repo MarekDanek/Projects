@@ -6,7 +6,7 @@ Vector::Vector() : x(0.0), y(0.0) {}
 
 Vector::Vector(double x_, double y_) : x(x_), y(y_) {}
 
-double Vector::set_x(double x_)
+void Vector::set_x(double x_)
 {
     x = x_;
 }
@@ -15,8 +15,8 @@ double Vector::get_x(){
     return x;
 }
 
-double Vector::set_y(double y_){
-    return y = y_;
+void Vector::set_y(double y_){
+    y = y_;
 }
 
 double Vector::get_y(){

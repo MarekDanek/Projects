@@ -5,9 +5,9 @@ class Vector
     public:                    
         Vector();
         Vector(double x_, double y_);   
-        double set_x(double x_);
+        void set_x(double x_);
         double get_x();
-        double set_y(double y_);     
+        void set_y(double y_);     
         double get_y();
         double lenVector();
         double SquareLenVector();
