@@ -11,7 +11,7 @@ void Vector::set_x(double x_)
     x = x_;
 }
 
-double Vector::get_x(){
+double Vector::get_x() const{
     return x;
 }
 
@@ -19,7 +19,7 @@ void Vector::set_y(double y_){
     y = y_;
 }
 
-double Vector::get_y(){
+double Vector::get_y() const{
     return y;
 }
 
@@ -31,7 +31,7 @@ double Vector::SquareLenVector(){
     return x*x + y*y;
 }
 
-Vector Vector::ScaleVector(double s){
+Vector Vector::ScaleVector(double s) const{
     return Vector(x * s, y * s);
 }
 

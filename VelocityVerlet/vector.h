@@ -1,4 +1,4 @@
-
+#pragma once
 
 class Vector
 {
@@ -6,12 +6,12 @@ class Vector
         Vector();
         Vector(double x_, double y_);   
         void set_x(double x_);
-        double get_x();
+        double get_x() const;
         void set_y(double y_);     
-        double get_y();
+        double get_y() const;
         double lenVector();
         double SquareLenVector();
-        Vector ScaleVector(double s);
+        Vector ScaleVector(double s) const;
         
     private:
         double x;
