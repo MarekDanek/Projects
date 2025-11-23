@@ -1,8 +1,8 @@
 #include "velocityVerletIntegrator.h"
-#include "pointParticle.h"
 #include "vector.h"
 #include <iostream>
 #include <cmath>
+#include <fstream>
     
 void VelocityVerletIntegrator::add(PointParticle& pointParticle)
 {
@@ -126,6 +126,15 @@ void VelocityVerletIntegrator::CalculateNewVelocities(std::vector<PointParticle>
 
 void VelocityVerletIntegrator::run(double dt, double t0, double tMax)
 {
+    std::ofstream outputFile("vystup.csv"); // uložíme CSV soubor
+    if (!outputFile) {
+        std::cerr << "Nelze otevřít soubor pro zápis!" << std::endl;
+        return;
+    }
+
+    // volitelně hlavička CSV
+    outputFile << "cas_dni,x_zeme,y_zeme\n";
+
    std::vector<PointParticle> container1 = pointParticles;
    std::vector<PointParticle> container2 = pointParticles;
 
@@ -138,32 +147,33 @@ void VelocityVerletIntegrator::run(double dt, double t0, double tMax)
 
    CalculateAccelerations(container1);
    
-   int steps_per_print = 720; 
+   int steps_per_print = 24; 
    int step_counter = 0;
 
-   for (double t = t0; t < tMax; t += dt) 
-   {
+    for (double t = t0; t < tMax; t += dt) 
+    {
         CalculateNewPositions(container1, container2, dt);
-
         CalculateAccelerations(container2);
-
         CalculateNewVelocities(container1, container2, dt);
 
         container1.swap(container2);
- 
+
         step_counter++;
         if (step_counter >= steps_per_print)
         {
-          
-            std::cout << "Cas: " << (t + dt) / (3600.0 * 24.0) << " dni"
-                      << ", Pozice Zeme [x]: " << container1[1].position.get_x() 
-                      << ", Pozice Zeme [y]: " << container1[1].position.get_y()
-                      << std::endl;
-            
-            step_counter = 0; 
+            double cas_dni = (t + dt) / (3600.0 * 24.0);
+            double x_zeme = container1[1].position.get_x();
+            double y_zeme = container1[1].position.get_y();
+
+            // zapiš do souboru
+            outputFile << cas_dni << "," << x_zeme << "," << y_zeme << "\n";
+
+            step_counter = 0;
         }
-     
-   }
-  pointParticles = container1;
+    }
+
+    outputFile.close();
+
+    pointParticles = container1;
 }
 
