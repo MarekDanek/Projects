@@ -13,6 +13,6 @@ class Node{
             this->ID_node = _id;
         };
 
-        std::vector<Node> childs;
+        std::vector<Node*> childs;
         void addNode(Node node);
 };
