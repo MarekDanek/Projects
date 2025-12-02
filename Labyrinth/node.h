@@ -1,4 +1,4 @@
-#include <list>
+#include <vector>
 #pragma once
 
 class Node{
@@ -13,6 +13,6 @@ class Node{
             this->ID_node = _id;
         };
 
-        std::list<Node> nodes;
+        std::vector<Node> childs;
         void addNode(Node node);
 };
