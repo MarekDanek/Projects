@@ -1,16 +1,18 @@
 #include <vector>
+#include "coords.h"
+#include "direction.h"
 #pragma once
 
-class Node{
+class Node
+{
     public:
-        int X;
-        int Y;
+        Coords coords;
         int ID_node;
-           Node(int _X, int _Y, int _id){
-            
-            this->X = _X;
-            this->Y = _Y;
-            this->ID_node = _id;
+        std::vector<Direction> direction;
+        Node(Coords coords_, int id_){
+            this->coords = coords_;
+            this->ID_node = id_;
+            this->direction = {Direction::North, Direction::South, Direction::West, Direction::East};
         };
 
         std::vector<Node*> childs;

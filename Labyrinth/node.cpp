@@ -1,10 +1,8 @@
-#include <list>
 #include "node.h"
 
-std::list<Node> nodes;
-
-void addNode(Node node){   
-    nodes.push_back(node);
+void Node::addNode(Node node)
+{   
+    childs.push_back(&node);
 }
 
 

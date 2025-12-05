@@ -1,7 +1,8 @@
-#include "node.h"
+#include "labyrinthAlgorithm.h"
 #include <iostream>
 using namespace std;
 
-int main(){
+int main()
+{
     
 }
